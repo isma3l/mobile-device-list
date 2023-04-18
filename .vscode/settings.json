@@ -3,5 +3,12 @@
         "activityBar.background": "#49230F",
         "titleBar.activeBackground": "#663215",
         "titleBar.activeForeground": "#FEFAF8"
-    }
+    },
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "[javascript]": {
+  "editor.defaultFormatter": "esbenp.prettier-vscode"
+},
+"editor.codeActionsOnSave": {
+  "source.fixAll.eslint": true
+}
 }
