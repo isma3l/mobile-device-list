@@ -1,25 +1,17 @@
-import logo from './logo.svg';
-import './App.css';
-import Temp from '@/components';
-function App() {
+import { Route, Routes } from 'react-router-dom'
+import './App.css'
+import { RouteKeys } from './constants'
+import { LayoutPage, HomePage, UnknownPage } from './pages'
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <Routes>
+      <Route path={RouteKeys.base} element={<LayoutPage />}>
+        <Route index element={<HomePage />} />
+        <Route path="*" element={<UnknownPage />} />
+      </Route>
+    </Routes>
+  )
 }
 
-export default App;
+export default App
