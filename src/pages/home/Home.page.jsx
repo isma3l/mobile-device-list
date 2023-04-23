@@ -1,6 +1,9 @@
 import { useEffect, useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import { ProductListComponent } from '@/features/home'
 import { fetchProducts } from '@/services'
+import { MessageComponent } from '@/components/atoms'
+
 /*
 const items = [
   {
@@ -808,6 +811,7 @@ const items = [
 const HomePage = () => {
   const [error, setError] = useState(false)
   const [products, setProducts] = useState([])
+  const { t } = useTranslation()
 
   useEffect(() => {
     const getProducts = async () => {
@@ -825,7 +829,11 @@ const HomePage = () => {
   }, [])
   return (
     <div className="flex flex-col py-6 w-10/12 mx-auto">
-      <ProductListComponent products={products} />
+      {error ? (
+        <MessageComponent message={t('Pages.Home.messageError')} />
+      ) : (
+        <ProductListComponent products={products} />
+      )}
     </div>
   )
 }

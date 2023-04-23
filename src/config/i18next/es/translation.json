@@ -4,7 +4,8 @@
             "Item": {
                 "model": "Modelo",
                 "from": "Desde"
-            }
+            },
+            "messageError": "Hubo un error al obtener el listado de productos."
         }
     }
 }
