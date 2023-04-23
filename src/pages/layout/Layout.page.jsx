@@ -3,7 +3,7 @@ import { Header } from '@/components/molecules'
 
 const LayoutPage = () => {
   return (
-    <div className="w-10/12 mx-auto">
+    <div className="w-full mx-auto">
       <Header />
       <Outlet />
     </div>
