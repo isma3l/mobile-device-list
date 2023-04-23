@@ -1,7 +1,7 @@
 const createFormatter = (locales, currency) => {
   return new Intl.NumberFormat(locales, {
     style: 'currency',
-    currency: 'EUR'
+    currency
   }).format
 }
 

@@ -1,0 +1,10 @@
+{
+    "Pages": {
+        "Home": {
+            "Item": {
+                "model": "Modelo",
+                "from": "Desde"
+            }
+        }
+    }
+}

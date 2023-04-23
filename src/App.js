@@ -1,7 +1,8 @@
 import { Route, Routes } from 'react-router-dom'
-import './App.css'
+import './config/i18next/config'
 import { RouteKeys } from './constants'
 import { LayoutPage, HomePage, UnknownPage } from './pages'
+import './App.css'
 
 const App = () => {
   return (
