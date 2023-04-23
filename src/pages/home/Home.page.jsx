@@ -1,5 +1,7 @@
+import { useEffect, useState } from 'react'
 import { ProductListComponent } from '@/features/home'
-
+import { fetchProducts } from '@/services'
+/*
 const items = [
   {
     id: 'ZmGrkLRPXOTpxsU4jjAcv',
@@ -802,11 +804,28 @@ const items = [
       'https://itx-frontend-test.onrender.com/images/AasKFs5EGbyAEIKkcHQcF.jpg'
   }
 ]
-
+ */
 const HomePage = () => {
+  const [error, setError] = useState(false)
+  const [products, setProducts] = useState([])
+
+  useEffect(() => {
+    const getProducts = async () => {
+      try {
+        const data = await fetchProducts()
+        console.log(products)
+        setProducts(data)
+      } catch (err) {
+        setError(true)
+      } /*  finally {
+      } */
+    }
+
+    getProducts()
+  }, [])
   return (
     <div className="flex flex-col py-6 w-10/12 mx-auto">
-      <ProductListComponent products={items} />
+      <ProductListComponent products={products} />
     </div>
   )
 }
