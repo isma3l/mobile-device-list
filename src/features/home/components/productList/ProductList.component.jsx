@@ -1,5 +1,4 @@
 import PropTypes from 'prop-types'
-
 import ItemListComponent from '../item/ProductItem.component'
 
 const ProductListComponent = ({ products }) => {
