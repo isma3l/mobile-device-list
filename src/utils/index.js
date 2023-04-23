@@ -1,1 +1,6 @@
-export { createLocaleFormatter } from './amountFormatter'
+export { createLocaleFormatter } from './moneyFormatter/amountFormatter'
+export {
+  storageDataWithTimeStamp,
+  getLocalDataWithTimeStamp
+} from './localData/localDataStorage'
+export { isLocalDataValid } from './localData/localDataValidator'
