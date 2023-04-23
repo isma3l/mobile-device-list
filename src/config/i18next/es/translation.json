@@ -5,6 +5,7 @@
                 "model": "Modelo",
                 "from": "Desde"
             },
+            "placeHolderFilter": "Filtrar productos...",
             "messageError": "Hubo un error al obtener el listado de productos."
         }
     }

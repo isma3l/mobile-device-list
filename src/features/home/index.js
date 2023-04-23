@@ -1,1 +1,5 @@
-export { ProductListComponent, HomeSqueletonComponent } from './components'
+export {
+  ProductListComponent,
+  HomeSqueletonComponent,
+  FilterComponent
+} from './components'
