@@ -1,6 +1,8 @@
 import PropTypes from 'prop-types'
+import { Spinner } from 'flowbite-react'
 import { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
+import { purchaseProduct } from '@/services'
 
 const Options = ({ options, label, onChange, name, value, placeholder }) => {
   return (
@@ -26,17 +28,30 @@ const Options = ({ options, label, onChange, name, value, placeholder }) => {
   )
 }
 
-const ShoppingFormComponent = ({ colors, storages, onSubmit }) => {
+const ShoppingFormComponent = ({ colors, storages, productId }) => {
   const [color, setColor] = useState('')
   const [storage, setStorage] = useState('')
+  const [loadingPurchase, setLoadingPurchase] = useState(false)
+  const [errorPurchase, setErrorPurchase] = useState(false)
+
   const { t } = useTranslation()
 
-  const onSubmitHandler = event => {
+  const onSubmitHandler = async event => {
     event.preventDefault()
-    onSubmit({
-      color,
-      storage
-    })
+    try {
+      const params = {
+        id: productId,
+        colorCode: color,
+        storageCode: storage
+      }
+      setLoadingPurchase(true)
+      const result = await purchaseProduct(params)
+      console.log('result', result)
+    } catch (error) {
+      setErrorPurchase(true)
+    } finally {
+      setLoadingPurchase(false)
+    }
   }
 
   useEffect(() => {
@@ -47,6 +62,8 @@ const ShoppingFormComponent = ({ colors, storages, onSubmit }) => {
       setStorage(storages[0].code)
     }
   }, [colors, storages])
+
+  if (errorPurchase) return 'ERRROR'
 
   return (
     <div className="mt-10 w-5/6 border-t-2 pt-10">
@@ -72,10 +89,15 @@ const ShoppingFormComponent = ({ colors, storages, onSubmit }) => {
           <button
             type="submit"
             value="Submit"
-            className="bg-black text-white px-12 py-2 rounded-3xl"
+            className="bg-black text-white px-16 py-2 rounded-3xl"
             disabled={color === '' || storage === ''}
           >
-            {t('Pages.Details.form.button')}
+            <div className="flex justify-center items-center">
+              <span className="text-xl">{t('Pages.Details.form.button')}</span>
+              {loadingPurchase && (
+                <Spinner size="sm" aria-label="Default status example" />
+              )}
+            </div>
           </button>
         </div>
       </form>
@@ -96,7 +118,7 @@ ShoppingFormComponent.propTypes = {
       name: PropTypes.string
     })
   ),
-  onSubmit: PropTypes.func
+  productId: PropTypes.string
 }
 
 export default ShoppingFormComponent

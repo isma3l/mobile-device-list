@@ -22,7 +22,10 @@ const CameraComponent = ({ options, label }) => {
 }
 
 CameraComponent.propTypes = {
-  options: PropTypes.arrayOf(PropTypes.string),
+  options: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.string),
+    PropTypes.string
+  ]),
   label: PropTypes.string
 }
 

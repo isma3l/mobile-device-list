@@ -9,32 +9,28 @@ import {
 
 const ProductDetailsPage = () => {
   const urlParams = useParams()
-  const [error, setError] = useState(false)
-  const [loading, setLoading] = useState(false)
+  const [errorFetch, setErrorFetch] = useState(false)
+  const [loadingFetch, setLoadingFetch] = useState(false)
   const [productDetails, setProductDetails] = useState()
 
   useEffect(() => {
     const getProductsDetails = async () => {
       try {
-        setLoading(true)
+        setLoadingFetch(true)
         const data = await fetchProductDetails(urlParams.productId)
         if (data) setProductDetails(data)
       } catch (err) {
-        setError(true)
+        setErrorFetch(true)
       } finally {
-        setLoading(false)
+        setLoadingFetch(false)
       }
     }
 
     getProductsDetails()
   }, [])
 
-  const handleSubmit = value => {
-    console.log(value)
-  }
-
-  if (loading) return 'cargando'
-  if (error) return 'error'
+  if (loadingFetch) return 'cargando'
+  if (errorFetch) return 'error'
 
   return (
     <div className="flex max-sm:flex-col px-4 py-10 justify-between h-full">
@@ -44,7 +40,7 @@ const ProductDetailsPage = () => {
         <ShoppingFormComponent
           colors={productDetails?.options.colors ?? []}
           storages={productDetails?.options.storages ?? []}
-          onSubmit={handleSubmit}
+          productId={productDetails?.id}
         />
       </div>
     </div>
