@@ -1,9 +1,10 @@
 import { MessageComponent } from '@/components/atoms'
+import { useTranslation } from 'react-i18next'
 
 const UnknownPage = () => {
-  return (
-    <MessageComponent message="Error: The page you are looking for was not found." />
-  )
+  const { t } = useTranslation()
+
+  return <MessageComponent message={t('Pages.Unknown.message')} />
 }
 
 export default UnknownPage

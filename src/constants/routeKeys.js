@@ -1,3 +1,5 @@
 export const RouteKeys = {
-  base: '/'
+  baseUrl: '/',
+  productDetailsUrl: 'product/:productId',
+  goProductDetails: productId => `/product/${productId}`
 }

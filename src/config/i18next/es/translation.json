@@ -7,6 +7,33 @@
             },
             "placeHolderFilter": "Filtrar productos...",
             "messageError": "Hubo un error al obtener el listado de productos."
+        },
+        "Unknown": {
+            "message": "No se ha encontrado la página que busca."
+        },
+        "Details": {
+            "description": {
+                "title": "Descripción",
+                "cpu": "CPU",
+                "ram": "RAM",
+                "operatingSystem": "Sistema Operativo",
+                "displayResolution": "Resolucion de pantalla o Bateria",
+                "dimentions": "Dimensiones",
+                "primaryCamera": "Cámara principal",
+                "secondaryCamera": "Cámara secundaria"
+            },
+            "form": {
+                "title": "Opciones de compra",
+                "colors": {
+                    "label": "Colores",
+                    "placeholder": "Selecciona un color..."
+                },
+                "storages": {
+                    "label": "Almacenamiento",
+                    "placeholder": "Selecciona la capacidad..."
+                },
+                "button": "Añadir"
+            }
         }
     }
 }

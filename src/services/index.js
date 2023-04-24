@@ -1,1 +1,2 @@
-export { fetchProducts } from './productServices'
+export { fetchProducts } from './productsService'
+export { fetchProductDetails } from './productDetailsService'

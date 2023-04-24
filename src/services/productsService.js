@@ -10,7 +10,6 @@ const fetchProductsFromApi = async () => {
   try {
     const products = await get(urlKeys.productsUrl)
     storageDataWithTimeStamp(products, StorageKeys.productsKey)
-
     return products
   } catch (error) {
     console.error('Error getting the list of products.', error)
