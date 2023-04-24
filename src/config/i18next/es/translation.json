@@ -35,5 +35,11 @@
                 "button": "Añadir"
             }
         }
+    },
+    "Header": {
+        "breadcrumb": {
+            "home": "Página inicial",
+            "product": "Detalle dispositivo móvil"
+        }
     }
 }

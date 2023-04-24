@@ -1,11 +1,5 @@
 import { Link } from 'react-router-dom'
 import { BadgeCartComponent, BreadCrumbComponent } from '@/components/atoms'
-import { HiHome } from 'react-icons/hi'
-
-const temps = [
-  { url: '#', label: 'Página inicial', icon: HiHome },
-  { label: 'Móviles' }
-]
 
 const HeaderComponent = () => {
   return (
@@ -17,7 +11,7 @@ const HeaderComponent = () => {
         <BadgeCartComponent items={10} />
       </div>
       <div className="pl-8">
-        <BreadCrumbComponent data={temps} />
+        <BreadCrumbComponent />
       </div>
     </div>
   )
