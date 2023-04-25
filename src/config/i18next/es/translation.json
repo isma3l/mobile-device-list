@@ -22,6 +22,9 @@
                 "primaryCamera": "Cámara principal",
                 "secondaryCamera": "Cámara secundaria"
             },
+            "results": {
+                "messageError": "Ocurrió un error al obtener los detalles del producto"
+            },
             "form": {
                 "title": "Opciones de compra",
                 "colors": {
@@ -32,7 +35,9 @@
                     "label": "Almacenamiento",
                     "placeholder": "Selecciona la capacidad..."
                 },
-                "button": "Añadir"
+                "button": "Añadir",
+                "messageError": "Ocurrió un error al añadir el producto",
+                "messageSuccess": "Se añadió el producto a la cesta"
             }
         }
     },

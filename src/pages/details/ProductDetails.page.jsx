@@ -1,5 +1,7 @@
 import { useParams } from 'react-router-dom'
 import { useEffect, useState } from 'react'
+import toast from 'react-hot-toast'
+import { useTranslation } from 'react-i18next'
 import { fetchProductDetails } from '@/services'
 import {
   ProductImageComponent,
@@ -10,9 +12,10 @@ import {
 
 const ProductDetailsPage = () => {
   const urlParams = useParams()
-  const [errorFetch, setErrorFetch] = useState(false)
   const [loadingFetch, setLoadingFetch] = useState(false)
   const [productDetails, setProductDetails] = useState()
+
+  const { t } = useTranslation()
 
   useEffect(() => {
     const getProductsDetails = async () => {
@@ -21,7 +24,7 @@ const ProductDetailsPage = () => {
         const data = await fetchProductDetails(urlParams.productId)
         if (data) setProductDetails(data)
       } catch (err) {
-        setErrorFetch(true)
+        toast.error(t('Pages.Details.results.messageError'))
       } finally {
         setLoadingFetch(false)
       }
@@ -31,10 +34,9 @@ const ProductDetailsPage = () => {
   }, [])
 
   if (loadingFetch) return <DetailSqueletonComponent />
-  if (errorFetch) return 'error'
 
   return (
-    <div className="flex max-sm:flex-col px-4 py-10 justify-between h-full">
+    <div className="flex max-sm:flex-col px-4 pt-10 pb-16 justify-between h-full">
       <ProductImageComponent imageUrl={productDetails?.imgUrl} />
       <div className="flex flex-col px-8 w-3/5 max-sm:w-full">
         <ProductDescriptionComponent {...(productDetails || {})} />

@@ -2,7 +2,7 @@ import PropTypes from 'prop-types'
 import { useTranslation } from 'react-i18next'
 import { createLocaleFormatter } from '@/utils'
 import ItemComponent from './Item.component'
-import CameraComponent from './Camera.component'
+import CameraComponent from './DataCamera.component'
 
 const formatPrice = createLocaleFormatter()
 
@@ -27,7 +27,7 @@ const ProductDescriptionComponent = ({
         <span className="text-3xl font-bold mr-2.5">
           {brand} - {model}
         </span>
-        <span className="text-2xl font-medium">{formatPrice(price)}</span>
+        <span className="text-2xl font-medium">{formatPrice(price ?? 0)}</span>
       </div>
       <div className="flex flex-col w-full">
         <p className="font-bold text-lg mb-4">
@@ -54,7 +54,7 @@ const ProductDescriptionComponent = ({
             label={t('Pages.Details.description.dimentions')}
             value={dimentions}
           />
-          <ItemComponent label="Peso" value={weight ? `${weight}gr` : '-'} />
+          <ItemComponent label="Peso" value={weight ? `${weight}gr` : ''} />
           <CameraComponent
             label={t('Pages.Details.description.primaryCamera')}
             options={primaryCamera}
@@ -83,7 +83,10 @@ ProductDescriptionComponent.propTypes = {
   weight: PropTypes.string,
   displayResolution: PropTypes.string,
   dimentions: PropTypes.string,
-  primaryCamera: PropTypes.arrayOf(PropTypes.string),
+  primaryCamera: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.string),
+    PropTypes.string
+  ]),
   secondaryCmera: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.string),
     PropTypes.string

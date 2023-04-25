@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types'
 import { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
+import toast from 'react-hot-toast'
 import { purchaseProduct } from '@/services'
 import { useShoppingApiContext } from '@/hooks'
 import SelectComponent from './Select.component'
@@ -11,7 +12,6 @@ const ShoppingFormComponent = ({ colors, storages, productId }) => {
   const [color, setColor] = useState()
   const [storage, setStorage] = useState()
   const [loadingPurchase, setLoadingPurchase] = useState(false)
-  const [errorPurchase, setErrorPurchase] = useState(false)
 
   const { t } = useTranslation()
 
@@ -25,10 +25,11 @@ const ShoppingFormComponent = ({ colors, storages, productId }) => {
       }
       setLoadingPurchase(true)
       const shoppingCar = await purchaseProduct(params)
-      console.log('result', shoppingCar)
+
       updateShoppingCart(shoppingCar.count)
+      toast.success(t('Pages.Details.form.messageSuccess'))
     } catch (error) {
-      setErrorPurchase(true)
+      toast.error(t('Pages.Details.form.messageError'))
     } finally {
       setLoadingPurchase(false)
     }
@@ -42,8 +43,6 @@ const ShoppingFormComponent = ({ colors, storages, productId }) => {
       setStorage(storages[0].code)
     }
   }, [colors, storages])
-
-  if (errorPurchase) return 'ERRROR'
 
   return (
     <div className="mt-10 w-5/6 border-t-2 pt-10">
