@@ -27,7 +27,7 @@ yarn start
 Después de ejecutar el comando se ejecutará un servidor local en http://localhost:3000 y se abrirá el navegador con la aplicacion web.
 
 Prueba en modo production
-La aplicación se desplego en 
+La aplicación se desplego en https://mobile-device-list.vercel.app/
 
 - Empaquetar la aplicación
 Ejecutar el siguiente comando:
