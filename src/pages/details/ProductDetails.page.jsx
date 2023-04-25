@@ -4,7 +4,8 @@ import { fetchProductDetails } from '@/services'
 import {
   ProductImageComponent,
   ProductDescriptionComponent,
-  ShoppingFormComponent
+  ShoppingFormComponent,
+  DetailSqueletonComponent
 } from '@/features/details'
 
 const ProductDetailsPage = () => {
@@ -29,7 +30,7 @@ const ProductDetailsPage = () => {
     getProductsDetails()
   }, [])
 
-  if (loadingFetch) return 'cargando'
+  if (loadingFetch) return <DetailSqueletonComponent />
   if (errorFetch) return 'error'
 
   return (

@@ -1,5 +1,6 @@
 export {
   ProductImageComponent,
   ProductDescriptionComponent,
-  ShoppingFormComponent
+  ShoppingFormComponent,
+  DetailSqueletonComponent
 } from './components'
